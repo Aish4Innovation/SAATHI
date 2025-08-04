@@ -19,7 +19,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 const pool = mysql.createPool({
   host: 'localhost',
   user: 'root',
-  password: 'ramco', 
+  password: 'YOUR_PASSWORD', 
   database: 'saathi',
   waitForConnections: true,
   connectionLimit: 10,
@@ -44,9 +44,9 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // Configure Twilio with your credentials
-const accountSid = 'AC4eea05a14ae3d96b3cd8701db7789ed2';
-const authToken = '88467bf8c94979abf98d94dbc0ba7b9f';
-const twilioPhoneNumber = '+15075026181';
+const accountSid = 'YOUR SID';
+const authToken = 'YOUR AUTH TOKEN';
+const twilioPhoneNumber = 'YOUR PHONE NO';
 const client = twilio(accountSid, authToken);
 
 // ADDED: A reusable function to send the caregiver notification via Twilio
@@ -320,4 +320,5 @@ cron.schedule('*/15 * * * *', async () => {
 
 app.listen(port, () => {
   console.log(`Saathi API is listening on http://localhost:${port}`);
+
 });
